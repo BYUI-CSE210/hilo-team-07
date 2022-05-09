@@ -1,4 +1,5 @@
 
+import random
 """
     Update the code and the comments as you change the code for your game.  You will be graded on following the
     Rules listed and your program meets all of the Requirements found on 
