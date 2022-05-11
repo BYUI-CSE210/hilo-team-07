@@ -13,7 +13,7 @@ Start your IDE and open the project folder. Select the main module inside the di
 
 ## Authors
 ---
-Ariana Jerome \n
-Kevin Pina \n
-Kobe Lemon \n
-Ricardo Salazar \n
+Ariana Jerome 
+Kevin Pina 
+Kobe Lemon 
+Ricardo Salazar 
