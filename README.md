@@ -6,6 +6,15 @@ The player will be asked each round if they want to play another round. If they 
 ---
 Start your IDE and open the project folder. Select the main module inside the dice folder and click the "run" button.
 
+## Project Structure
+---
+The project files and folders are organized as follows:
+```
+root                    (project root folder)
++-- hilo                (source code for game)
+  +-- __main__.py       (program entry point)
++-- README.md           (general info)
+```
 
 ## Required Technologies
 ---
