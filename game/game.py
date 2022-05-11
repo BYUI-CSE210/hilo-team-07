@@ -1,10 +1,11 @@
 import random
 
+# Creating a Game Class
 class Game():
     def __init__(self):
      self.player_score = 300
 
-
+    # Method from the Game Class
     def display_card(self):
         card_number1 = random.randint(1,13)
         print()
@@ -12,6 +13,8 @@ class Game():
         user_guess = input('Higher or lower? [h/l]: ')
         card_number = random.randint(1,13)
         print('Next card was: ' + str(card_number))
+       
+        # This is the Validation Section 
         if user_guess == 'h' and card_number > card_number1:
             self.player_score += 100
         elif user_guess == 'l' and card_number < card_number1:
@@ -22,7 +25,7 @@ class Game():
 
             
 
-
+# This is the main function that contains the game
 
 def main():
     playing = True
@@ -41,6 +44,6 @@ def main():
    
 
 
-
+#Calling the main function
 if __name__ == "__main__":
     main()
