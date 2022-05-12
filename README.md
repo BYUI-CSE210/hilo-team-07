@@ -22,7 +22,7 @@ root                    (project root folder)
 
 ## Authors
 ---
-Ariana Jerome 
-Kevin Pina 
-Kobe Lemon 
-Ricardo Salazar 
+Ariana Jerome |
+Kevin Pina |
+Kobe Lemon |
+Ricardo Salazar |
