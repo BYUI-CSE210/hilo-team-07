@@ -40,6 +40,9 @@ class Game():
             self.player_score -= 75
 
         print('Your score is: ' + str(self.player_score))
+        #Addign the game over message Once the user's score is equal to 0 
+        if self.player_score <= 0:
+            print('Game over!')
 
         self.cards.get_new_card()
 
