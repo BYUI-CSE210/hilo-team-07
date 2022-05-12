@@ -1,62 +1,70 @@
-
 import random
-"""
-    Update the code and the comments as you change the code for your game.  You will be graded on following the
-    Rules listed and your program meets all of the Requirements found on 
-    https://byui-cse.github.io/cse210-course-competency/abstraction/materials/hilo-specification.html
-"""
 
-
-class Director:
-    """A person who directs the game. 
-
-    The responsibility of a Director is to control the sequence of play.
-
-    Attributes:
-        is_playing (boolean): Whether or not the game is being played.
-    """
-
+# Creating a Cards Class
+class Cards:
     def __init__(self):
-        """Constructs a new Director.
+        self.card1 = 0
+        self.card2 = 2
+        
+    def get_card_value(self):
+        self.card1 = random.randint(1,13)
+        self.card2 = random.randint(1,13)
 
-        Args:
-            self (Director): an instance of Director.
-        """
-        self.is_playing = True
+    def get_new_card(self):
+        self.card1 = self.card2
+        self.card2 = random.randint(1,13)
 
-    def start_game(self):
-        """Starts the game by running the main game loop.
+# Creating a Game Class
+class Game():
+    def __init__(self):
+        self.player_score = 300
+        self.cards = Cards()
+        self.cards.get_card_value()
 
-        Args:
-            self (Director): an instance of Director.
-        """
-        while self.is_playing:
-            self.get_inputs()
-            self.do_updates()
-            self.do_outputs()
+    # Method from the Game Class
+    def display_card(self):
+        #card_number1 = self.cards.card1
+        #card_number2 = self.cards.card2
+        print()
+        print("The card is: "+ str(self.cards.card1))
+        user_guess = input('Higher or lower? [h/l]: ')
+        # card_number = random.randint(1,13)
+        print('Next card was: ' + str(self.cards.card2))
+       
+        # This is the Validation Section 
+        if user_guess == 'h' and self.cards.card2 > self.cards.card1:
+            self.player_score += 100
+        elif user_guess == 'l' and self.cards.card2 < self.cards.card1:
+            self.player_score += 100
+        else: 
+            self.player_score -= 75
 
-    def get_inputs(self):
-        """Ask the user if they want to roll.
+        print('Your score is: ' + str(self.player_score))
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        pass
+        self.cards.get_new_card()
 
-    def do_updates(self):
-        """Updates the player's score.
+            
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        if not self.is_playing:
-            return
+# This is the main function that contains the game
 
-    def do_outputs(self):
-        """Displays the dice and the score. Also asks the player if they want to roll again. 
+def main():
+    playing = True
+    user_question = ''
+    play1 = Game()
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        if not self.is_playing:
-            return
+    while playing:
+        play1.display_card()
+        user_question = input('Play Again? [y/n] ')
+        if user_question == 'y':
+            #main() 
+            pass
+        else:
+            playing = False
+        print()
+        
+   
+
+
+#Calling the main function
+if __name__ == "__main__":
+    main()
