@@ -1,70 +1,45 @@
-import random
+from game.game_class import Game
 
-# Creating a Cards Class
-class Cards:
+class Director:
+    """Pre-defined variables in __init__ allocates memory size early which makes the program run efficiently
+    Director does the following:
+       1. declares "playing" as true to start a later while loop
+       2. calls the "Game" class into a variable "play_game"
+       3. calls the "play_game.display_card()" method. The "display_card" method is explained in game_class.py
+       4. asks if the player wants to play again & restart the game if yes and ends the game if no
+    Attributes:
+        def main():
+            "play_game.display_card()" The "display_card" method is explained in game_class.py
+            "player_question" asks player to if they want to play again
+            "if player_question.upper() == 'Y':" continues the loop to restart the game
+            "else" ends the game when player does not want to play again 
+    """
     def __init__(self):
-        self.card1 = 0
-        self.card2 = 2
-        
-    def get_card_value(self):
-        self.card1 = random.randint(1,13)
-        self.card2 = random.randint(1,13)
+        # pre-defined the following variables to be used later
+        self.playing = True
+        self.play_game = None
+        self.player_question = None
 
-    def get_new_card(self):
-        self.card1 = self.card2
-        self.card2 = random.randint(1,13)
+    # This is the main function that contains the game
+    def main():
+        playing = True
+        play_game = Game()
 
-# Creating a Game Class
-class Game():
-    def __init__(self):
-        self.player_score = 300
-        self.cards = Cards()
-        self.cards.get_card_value()
-
-    # Method from the Game Class
-    def display_card(self):
-        #card_number1 = self.cards.card1
-        #card_number2 = self.cards.card2
-        print()
-        print("The card is: "+ str(self.cards.card1))
-        user_guess = input('Higher or lower? [h/l]: ')
-        # card_number = random.randint(1,13)
-        print('Next card was: ' + str(self.cards.card2))
-       
-        # This is the Validation Section 
-        if user_guess == 'h' and self.cards.card2 > self.cards.card1:
-            self.player_score += 100
-        elif user_guess == 'l' and self.cards.card2 < self.cards.card1:
-            self.player_score += 100
-        else: 
-            self.player_score -= 75
-
-        print('Your score is: ' + str(self.player_score))
-
-        self.cards.get_new_card()
-
+        # while loop to check if the game is playing
+        while playing:
+            play_game.display_card()
             
-
-# This is the main function that contains the game
-
-def main():
-    playing = True
-    user_question = ''
-    play1 = Game()
-
-    while playing:
-        play1.display_card()
-        user_question = input('Play Again? [y/n] ')
-        if user_question == 'y':
-            #main() 
-            pass
-        else:
-            playing = False
-        print()
-        
-   
-
-
-#Calling the main function
-if __name__ == "__main__":
-    main()
+            # asks the player if they want to play again
+            player_question = input('Do you want to play again? [Y/N] ')
+            # if the player wants to play again then return "playing" as true to continue the loop
+            if player_question.upper() == 'Y':
+                pass
+            # if the player does not want to play again then return "playing" as false to end the loop
+            else:
+                print("Thank you for playing!")
+                print()
+                playing = False
+            
+    #Calling the main function
+    if __name__ == "__main__":
+        main()
