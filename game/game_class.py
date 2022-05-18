@@ -50,7 +50,6 @@ class Game():
         # game over message when player's score is equal to 0 
         if self.player_score <= 0:
             print('Game over!')
-            # this is the function that ends the game if score is equal or lower than 0
-            # exit()
-        return self.player_score
         self.cards.get_new_card()
+        return self.player_score
+        
