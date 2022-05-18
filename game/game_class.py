@@ -7,7 +7,7 @@ class Game():
        2. asks player to guess if next card willb be hiher or lower than first card
        3. display 2nd card's value
        4. increases score by 100pts if player was correct or decreases by 75pts if player was wrong
-    Attributes:
+    Methods:
         def __init__(self):
             "self.player_score" is player's first score at beginning of game
             "self.cards" calls "Cards" class & saves it into a variable
@@ -18,6 +18,8 @@ class Game():
     """
     
     def __init__(self):
+        """Constructs a new Director. 
+        Args: self (Director): an instance of Director. """
         # the player's first score at the beginning of the game
         self.player_score = 300
         # calls the "Cards" class & saves it into a variable
@@ -27,6 +29,8 @@ class Game():
 
     # Method from the Game Class
     def display_card(self):
+        """Display the first card's value, then asks if the next card is higher or lower. Then display the 2nd card's value. Then increases or decreases the score accordingly 
+        Args: self (Director): an instance of Director. """
         print()
         print(f'The card is: {self.cards.card1}')
         player_guess = input('Will the next card be higher or lower? [H/L]: ')
@@ -46,5 +50,7 @@ class Game():
         # game over message when player's score is equal to 0 
         if self.player_score <= 0:
             print('Game over!')
-
+            # this is the function that ends the game if score is equal or lower than 0
+            # exit()
+        return self.player_score
         self.cards.get_new_card()
