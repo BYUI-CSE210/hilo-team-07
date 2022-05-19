@@ -1,61 +1,51 @@
-
-"""
-    Update the code and the comments as you change the code for your game.  You will be graded on following the
-    Rules listed and your program meets all of the Requirements found on 
-    https://byui-cse.github.io/cse210-course-competency/abstraction/materials/hilo-specification.html
-"""
-
+from game.game_class import Game
 
 class Director:
-    """A person who directs the game. 
-
-    The responsibility of a Director is to control the sequence of play.
-
-    Attributes:
-        is_playing (boolean): Whether or not the game is being played.
+    """Pre-defined variables in __init__ allocates memory size early which makes the program run efficiently
+    Director does the following:
+       1. declares "playing" as true to start a later while loop
+       2. calls the "Game" class into a variable "play_game"
+       3. calls the "play_game.display_card()" method. The "display_card" method is explained in game_class.py
+       4. asks if the player wants to play again & restart the game if yes and ends the game if no
+    Methods:
+        def main():
+            "play_game.display_card()" The "display_card" method is explained in game_class.py
+            "player_question" asks player to if they want to play again
+            "if player_question.upper() == 'Y':" continues the loop to restart the game
+            "else" ends the game when player does not want to play again 
     """
-
     def __init__(self):
         """Constructs a new Director.
+        Args: self (Director): an instance of Director. """
+        # pre-defined the following variables to be used later
+        self.playing = True
+        self.play_game = None
+        self.player_question = None
 
-        Args:
-            self (Director): an instance of Director.
-        """
-        self.is_playing = True
+    # This is the main function that contains the game
+    def main():
+        """Plays the game and asks if the player wants to play again or not and restart or end the game accordingly."""
+        playing = True
+        play_game = Game()
 
-    def start_game(self):
-        """Starts the game by running the main game loop.
-
-        Args:
-            self (Director): an instance of Director.
-        """
-        while self.is_playing:
-            self.get_inputs()
-            self.do_updates()
-            self.do_outputs()
-
-    def get_inputs(self):
-        """Ask the user if they want to roll.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        pass
-
-    def do_updates(self):
-        """Updates the player's score.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        if not self.is_playing:
-            return
-
-    def do_outputs(self):
-        """Displays the dice and the score. Also asks the player if they want to roll again. 
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        if not self.is_playing:
-            return
+        # while loop to check if the game is playing
+        while playing:
+            play_game.display_card()
+            score = play_game.player_score
+            # check if the score is equal or less than zero then stops the game
+            if score <= 0:
+                break
+            # asks the player if they want to play again
+            player_question = input('Do you want to play again? [Y/N] ')
+            # if the player wants to play again then return "playing" as true to continue the loop
+            if player_question.upper() == 'Y':
+                pass
+            # if the player does not want to play again then return "playing" as false to end the loop
+            else:
+                print("Thank you for playing!")
+                print()
+                playing = False
+            
+    #Calling the main function
+    if __name__ == "__main__":
+        main()
